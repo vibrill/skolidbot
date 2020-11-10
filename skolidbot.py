@@ -129,7 +129,7 @@ File tersebut akan digunakan sebagai database untuk melayani request data dari l
                 if simpeldatake('user/'+str(chat_id),1) == 'empty':
                     simpledachange('3','user/'+str(chat_id),1)
                     bot.sendMessage(chat_id,'kode yang anda masukkan salah, jatah memasukkan kode tersisa : '+simpeldatake('user/'+str(chat_id),1))
-                elif simpeldatake('user/'+str(chat_id),1) != 'blocked':
+                elif simpeldatake('user/'+str(chat_id),1) != 'blocked' and simpeldatake('user/'+str(chat_id),1) != 'valid' :
                     x = int(simpeldatake('user/'+str(chat_id),1))
                     if x > 0:
                         #print('ini string '+str(a))
@@ -141,6 +141,8 @@ File tersebut akan digunakan sebagai database untuk melayani request data dari l
                         f.write(str(chat_id))
                         f.close()
                         bot.sendMessage(chat_id,'anda terblokir, hubungi operator untuk memulihkan')
+                else:
+                    bot.sendMessage(chat_id,'kode yang anda masukkan tidak terdaftar, please contact vbrillianto@gmail.com to get access')
 #------------------------------------------------------------------------                            
 #------------------------------------------------------------------------    
     if command[4:10] == 'SKLDBT':
@@ -709,8 +711,9 @@ menampilkan daftar Karis/ Karsu
         f.close()
 
     if command == '/menu':
-        if chat_id==myID:
-            bot.sendMessage(chat_id,'''
+        if simpeldatake(urlb,1)=='valid':
+            if chat_id==myID:
+                bot.sendMessage(chat_id,'''
 berikut command untuk mengakses data
 
 /admin  : menu admin
@@ -719,8 +722,8 @@ berikut command untuk mengakses data
 /ops    : menu ops
 /info   : menu info bot
 ''')
-        elif simpeldatake(urlb,2)=='OPS':
-            bot.sendMessage(chat_id,'''
+            elif simpeldatake(urlb,2)=='OPS':
+                bot.sendMessage(chat_id,'''
 berikut command untuk mengakses data
 
 /gtk    : daftar GTK
@@ -728,16 +731,16 @@ berikut command untuk mengakses data
 /ops    : menu OPS
 /info   : menu info bot
 ''')
-        elif simpeldatake(urlb,2)=='NON':
-            bot.sendMessage(chat_id,'''
+            elif simpeldatake(urlb,2)=='NON':
+                bot.sendMessage(chat_id,'''
 berikut command untuk mengakses data
 
 /check  : melihat info pribadi
 /siswa  : daftar siswa
 /info   : menu info bot
 ''')
-        else:
-            bot.sendMessage(chat_id,'akses ilegal')
+            else:
+                bot.sendMessage(chat_id,'akses ilegal')
             
     if command == '/sortum':
         if simpeldatake(urlb,1)=='valid':
@@ -760,7 +763,7 @@ berikut command untuk mengakses data
 /alfasi : siswa berdasar huruf awal
 /sortum : siswa berdasarkan umur
 ''')
-        else:
+        else :
             bot.sendMessage(chat_id,'''
 /kelas  : daftar siswa per kelas
 /kip    : siswa menerima KIP
@@ -880,20 +883,21 @@ berikut command untuk mengakses data
                 bot.sendMessage(chat_id,'tidak ada siswa di daftar ini\n\ntekan /menu untuk kembali ke menu utama')
         
     if command == '/kelas':
-        kelasberisi =[x for x in os.listdir(urla+'dsiswa/rombel')]
-        ukuran= [os.path.getsize(urla+'dsiswa/rombel/'+x) for x in os.listdir(urla+'dsiswa/rombel')]
-        kelastampil=[]
-        for kelas in range(len(kelasberisi)):
-            print(kelasberisi[kelas]+':'+str(ukuran[kelas]))
-            if ukuran[kelas]>85:
-                kelastampil.append(kelasberisi[kelas])
-        kelastampil.sort()        
-        print(kelastampil)
-        strklst=''
-        strklst=strklst.join(kelastampil)
-        print(strklst)
         if simpeldatake(urlb,1)=='valid':
-            bot.sendMessage(chat_id,strklst.replace('kelas','\n/kelas_')[1:])
+            kelasberisi =[x for x in os.listdir(urla+'dsiswa/rombel')]
+            ukuran= [os.path.getsize(urla+'dsiswa/rombel/'+x) for x in os.listdir(urla+'dsiswa/rombel')]
+            kelastampil=[]
+            for kelas in range(len(kelasberisi)):
+                print(kelasberisi[kelas]+':'+str(ukuran[kelas]))
+                if ukuran[kelas]>85:
+                    kelastampil.append(kelasberisi[kelas])
+            kelastampil.sort()        
+            print(kelastampil)
+            strklst=''
+            strklst=strklst.join(kelastampil)
+            print(strklst)
+            if simpeldatake(urlb,1)=='valid':
+                bot.sendMessage(chat_id,strklst.replace('kelas','\n/kelas_')[1:])
     
     if command[:7] == '/kelas_':
         if simpeldatake(urlb,1)=='valid':
@@ -901,7 +905,7 @@ berikut command untuk mengakses data
                 f = open(urla+'dsiswa/rombel/'+command[1:].replace('_',''),'r')
                 nama = decode(f.read())
                 nama = nama.split('\n\n')
-                isi = '/_'+nama[0].replace(' ','_').replace('\n','\n/_')[:-2]+'\n'+nama[1]+'\n\n'+nama[2]
+                isi = '/_'+nama[0].replace(' ','_').replace('\n','\n/_')+'\n'+nama[1]+'\n\n'+nama[2]
                 
                 bot.sendMessage(chat_id,'Daftar Siswa kelas '+command[-2:].replace('s','').replace('_','')+'\n\n'+isi)#+'\nJumlah siswa = '+str(len(listsis)-1)+'\nJumlah laki-laki = '+str(hitungL)+'\nJumlah Perempuan = '+str(len(listsis)-hitungL-1)+'\n\n'+stringu+'\n\n tekan /kelas untuk kembali ke pilihan kelas\n tekan /menu untuk kembali ke menu utama')
                 f.close()
@@ -967,10 +971,11 @@ berikut command untuk mengakses data
             delOps(a[1])
     
     if command == '/progres':
-        f = open('plugin/dapodik.txt','r')
-        dapox = f.read()
-        f.close()
-        bot.sendMessage(chat_id,dapox + '\n\nTekan /menu untuk kembali ke menu utama')
+        if simpeldatake(urlb,1)=='valid':
+            f = open('plugin/dapodik.txt','r')
+            dapox = f.read()
+            f.close()
+            bot.sendMessage(chat_id,dapox + '\n\nTekan /menu untuk kembali ke menu utama')
     
     if command == '/cuaca':
         cualist=[]
