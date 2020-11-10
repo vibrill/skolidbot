@@ -1,0 +1,45 @@
+v1.0
++ Bot hanya untuk SDN Pusungmalang 2
++ terkoneksi data dapodik
+
+v1.1
++ multi lembaga
++ akses Ops terbatas perlembaga
++ login dengan password
++ perbaikan koneksi data user
++ (security)menghapus data mentah
+
+v2.0
++ (security) database GTK akan terenkripsi setelah akses data
+
+v2.1
++ integrasi data siswa
++ memperbaiki format data siswa
++ list siswa belum punya NIK, NISN dan NIPD
++ list siswa layak PIP
++ list siswa penerima KIP
++ pengelompokan siswa berdasar umur
++ pengelompokan siswa berdasar huruf awal
+
+v2.3
++ (security) data tetap terenkripsi selama akses
++ list siswa penerima KPS
++ menampilkan nomor KPS dan KIP
++ efisiensi manajemen file
++ (security) total enkripsi data GTK dan siswa
+
+v2.4
++ efisiensi memory untuk multi user
++ Ops dapat menghapus/mengembalikan akses GTK
++ membatasi akses GTK pada beberapa list siswa
++ menampilkan jenis kelamin di list kelas
++ menampilkan data usia di list kelas
+
+v2.5
++ dapat mendaftarkan/menghapus kode OPS
++ tambahan menu admin
++ list OPS(perlu perbaikan)
+
+v2.6
++info cuaca kota pasuruan berdasarkan BMKG
+

@@ -1,0 +1,16 @@
+SKOLIDBOT 2.6
+
+Bot ini dibangun dengan Python dan mengutamakan keamanan data.
+akses terhadap data hanya dapat dilakukan melalui password yang digenerate secara acak diikuti dengan akses Ops terbatas per-lembaga. 
+data GTK dan data siswa telah terenkripsi yang membuat data hanya bisa diakses lewat bot.
+info cuaca telah ditambahkan sebagai antisipasi perjalanan anda menuju ke dinas pendidikan.
+bot ini dibuat untuk memudahkan akses data Dapodik, dan untuk memudahkan OPS dan GTK mengetahui data siapa dan apa yang perlu diperbaharui
+
+Disclaimer: Bot ini tidak menampilkan data sesuai dengan database yang diupload oleh Ops. data terbaru tetap berada di tangan Ops.
+Oleh karena itu jika anda mendapatkan ketidak cocokan data, bertanyalah dengan baik kepada Ops, maka Ops yang budiman akan memberikan layanan prima membantu Anda
+
+segala kritik, saran, masukan dan pelaporan bug sangat kami butuhkan, maka dari itu jangan ragu untuk menuliskan semua itu pada vbrillianto@gmail.com
+Terimakasih
+
+Your Kid Ops
+VBrilliant

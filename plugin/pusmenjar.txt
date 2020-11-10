@@ -1,0 +1,168 @@
+tahun : 2020
+judul : Buku Saku Asesmen Diagnosis Kognitif Berkala
+kategori : Buku Saku
+counter : 2766
+url : https://pusmenjar.kemdikbud.go.id/publikasi?download=35
+
+tahun : 2020
+judul : Bahasa Indonesia jenjang SD kelas IV
+kategori : Modul Asesmen Awal
+counter : 1392
+url : https://pusmenjar.kemdikbud.go.id/publikasi?download=36
+
+tahun : 2020
+judul : Bahasa Indonesia jenjang SMP kelas VIII
+kategori : Modul Asesmen Awal
+counter : 1875
+url : https://pusmenjar.kemdikbud.go.id/publikasi?download=37
+
+tahun : 2020
+judul : Bahasa Indonesia jenjang SD kelas III
+kategori : Modul Asesmen Awal
+counter : 835
+url : https://pusmenjar.kemdikbud.go.id/publikasi?download=38
+
+tahun : 2020
+judul : Bahasa Indonesia jenjang SMA kelas X
+kategori : Modul Asesmen Awal
+counter : 735
+url : https://pusmenjar.kemdikbud.go.id/publikasi?download=39
+
+tahun : 2020
+judul : Matematika jenjang SD kelas III
+kategori : Modul Asesmen Awal
+counter : 934
+url : https://pusmenjar.kemdikbud.go.id/publikasi?download=40
+
+tahun : 2020
+judul : Matematika jenjang SD kelas IV
+kategori : Modul Asesmen Awal
+counter : 1026
+url : https://pusmenjar.kemdikbud.go.id/publikasi?download=41
+
+tahun : 2020
+judul : Matematika jenjang SMP kelas VIII
+kategori : Modul Asesmen Awal
+counter : 1295
+url : https://pusmenjar.kemdikbud.go.id/publikasi?download=42
+
+tahun : 2020
+judul : Matematika jenjang SMA kelas X
+kategori : Modul Asesmen Awal
+counter : 1168
+url : https://pusmenjar.kemdikbud.go.id/publikasi?download=43
+
+tahun : 2020
+judul : Numerasi Lintas Mata Pelajaran oleh Dicky Susanto, Ed.D
+kategori : Materi Paparan
+counter : 1285
+url : https://pusmenjar.kemdikbud.go.id/publikasi?download=44
+
+tahun : 2020
+judul : KEGIATAN LITERASI DAN NUMERASI DALAM PEMBELAJARAN JARAK JAUH  oleh Susanti Sufyadi
+kategori : Materi Paparan
+counter : 2185
+url : https://pusmenjar.kemdikbud.go.id/publikasi?download=45
+
+tahun : 2020
+judul : Pentingnya Kegiatan Literasi Bermakna di Masa Pandemi oleh Yayasan Literasi Anak Indonesia
+kategori : Materi Paparan
+counter : 947
+url : https://pusmenjar.kemdikbud.go.id/publikasi?download=46
+
+tahun : 2020
+judul : Mendignosa Siswa dan Tindak Lanjut oleh Prof. Dr. Dinn Wahyudin,MA
+kategori : Materi Paparan
+counter : 1299
+url : https://pusmenjar.kemdikbud.go.id/publikasi?download=47
+
+tahun : 2020
+judul : Asesmen Sederhana Untuk Diagnosis Secara Berkala Kondisi Siswa oleh Rahmawati
+kategori : Materi Paparan
+counter : 1155
+url : https://pusmenjar.kemdikbud.go.id/publikasi?download=48
+
+tahun : 2020
+judul : Menguatkan Koneksi Literasi Rumah dan Sekolah oleh Sofie Dewayani
+kategori : Materi Paparan
+counter : 761
+url : https://pusmenjar.kemdikbud.go.id/publikasi?download=49
+
+tahun : 2019
+judul : Majalah Asesmen vol. 16 no. 1 April 2019
+kategori : Buletin Assesment
+counter : 7238
+url : https://pusmenjar.kemdikbud.go.id/publikasi?download=9
+
+tahun : 2019
+judul : Model Penilaian Karakter
+kategori : Model Penilaian Pendidikan
+counter : 5644
+url : https://pusmenjar.kemdikbud.go.id/publikasi?download=23
+
+tahun : 2019
+judul : Model Penilaian Formatif
+kategori : Model Penilaian Pendidikan
+counter : 7352
+url : https://pusmenjar.kemdikbud.go.id/publikasi?download=24
+
+tahun : 2019
+judul : Panduan Penilaian Kinerja
+kategori : Model Penilaian Pendidikan
+counter : 8012
+url : https://pusmenjar.kemdikbud.go.id/publikasi?download=25
+
+tahun : 2019
+judul : Penilaian Portofolio
+kategori : Model Penilaian Pendidikan
+counter : 6712
+url : https://pusmenjar.kemdikbud.go.id/publikasi?download=26
+
+tahun : 2019
+judul : Penulisan Soal HOTS
+kategori : Model Penilaian Pendidikan
+counter : 7732
+url : https://pusmenjar.kemdikbud.go.id/publikasi?download=27
+
+tahun : 2019
+judul : Panduan Penilaian Tertulis
+kategori : Model Penilaian Pendidikan
+counter : 8905
+url : https://pusmenjar.kemdikbud.go.id/publikasi?download=28
+
+tahun : 2019
+judul : Ringkasan Eksekutif Hasil Ujian Nasional jenjang SMP 2019
+kategori : Rilis UN
+counter : 1166
+url : https://pusmenjar.kemdikbud.go.id/publikasi?download=32
+
+tahun : 2019
+judul : Ringkasan Eksekutif Hasil Ujian Nasional jenjang SMA 2019
+kategori : Rilis UN
+counter : 702
+url : https://pusmenjar.kemdikbud.go.id/publikasi?download=33
+
+tahun : 2019
+judul : Ringkasan Eksekutif Hasil Ujian Nasional jenjang SMK 2019
+kategori : Rilis UN
+counter : 642
+url : https://pusmenjar.kemdikbud.go.id/publikasi?download=34
+
+tahun : 2018
+judul : Ringkasan Eksekutif Hasil Ujian Nasional jenjang SMP 2018
+kategori : Rilis UN
+counter : 835
+url : https://pusmenjar.kemdikbud.go.id/publikasi?download=29
+
+tahun : 2018
+judul : Ringkasan Eksekutif Hasil Ujian Nasional jenjang SMA program IPA 2018
+kategori : Rilis UN
+counter : 391
+url : https://pusmenjar.kemdikbud.go.id/publikasi?download=30
+
+tahun : 2018
+judul : Ringkasan Eksekutif Hasil Ujian Nasional jenjang SMA program IPS 2018
+kategori : Rilis UN
+counter : 325
+url : https://pusmenjar.kemdikbud.go.id/publikasi?download=31
+
