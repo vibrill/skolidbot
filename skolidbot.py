@@ -14,6 +14,44 @@ import subprocess
 import wikis
 import pijar
 
+
+def cekDA():
+    u1='plugin/dapodik.txt'
+    u2='plugin/dapotest.txt'
+    beda=[]
+    with open(u1) as f:
+        a=f.read()
+        a=a.split('\n\n')
+    with open(u2) as f:
+        b=f.read()
+        b=b.split('\n\n')
+    for item in a:
+        if item not in b:
+            beda.append(item+'_x_')
+    return beda
+
+def cekcounter():
+    while True:
+        a=cekDA()
+        if a!=[]:
+            with open('ops.list','r') as f:
+                c=f.read()
+                c=c.split('\n')
+            d=''
+            for item in c:
+                if item !='':
+                    bot.sendMessage(int(item),'Update sinkronisasi terbaru :\n\n'+d.join(a).replace('_x_','\n\n'))
+            print(a)
+            with open('plugin/dapodik.txt','r') as f:
+                b=f.read()
+            with open('plugin/dapotest.txt','w') as f:
+                f.write(b)
+        time.sleep(60*60)
+
+import threading
+t = threading.Thread(target=cekcounter)
+t.start()
+
 #my chat id writen in myID file
 with open('myID') as f:
     myID=int(f.read())
@@ -63,27 +101,39 @@ def handle(msg):
         #mengubah string hasil decode menjadi list
         givenlist= givenlist.split('\n')
         sslist= sslist.split('\n')
+#         print(sslist)
         #mencocokan command dengan list shortskulist
         a=0
         for kode in sslist:
             a+=1
             if command==kode:
                 #--------set ops.list---------
-                strops=''
-                f=open('ops.list','r')
-                klk=f.read()
+                #membaca file list OPS.
+                listops=set()
+                f= open('ops.list')
+                ax=f.read()
                 f.close()
-                f=open('ops.list','a')
-                ops=set(klk.split('\n'))
-                ops.add(str(chat_id))
-                for x in ops:
-                    strops+=x+'\n'
-                print(strops)
-                f.write(strops)
+                
+                ax=ax.split('\n')
+                for item in ax:
+                    if item != '':
+                        listops.add(item)
+                #mengupdate file list OPS
+                ad=str(chat_id)
+                listops.add(ad)
+                listops=list(listops)
+                b=''
+                
+                for item in listops:
+                    b+=item+'\n'
+                
+                f= open('ops.list','w')
+                f.write(b)
                 f.close()
                 #------eo ops.list-----------    
                 idt = command[:3] # mengambil ID OPS atau NON
                 sekl=command[3:7] # mengambil ID sekolah
+                namasd=''
                 for sekolah in givenlist:
                     if sekl==sekolah[:4]:
                         namasd=sekolah[5:]
@@ -94,6 +144,7 @@ def handle(msg):
                 
                 #print('post count')
                 #mencatat id pass dan SD
+                simpledachange('valid','user/'+str(chat_id),1)
                 simpledachange(idt,'user/'+str(chat_id),2)
                 simpledachange(encode(command),'user/'+str(chat_id),3)
                 simpledachange(namasd,'user/'+str(chat_id),4)
@@ -104,19 +155,20 @@ def handle(msg):
                         bot.sendMessage(chat_id,'sekolah telah didaftarkan')
                         simpledachange('valid','user/'+str(chat_id),1)
                     else:
-                        bot.sendMessage('operator sudah terdaftar di akun lain, anda tidak memiliki wewenang menggunakan password OPS')
+                        bot.sendMessage(chat_id,'anda sudah terdaftar OPS di sekolah lain, anda tidak memiliki wewenang menggunakan password OPS ini')
                         simpledachange('blocked','user/'+str(chat_id),1)
                         f=open('user/blocklist','a+')
                         f.write(str(chat_id))
                         f.close()
-                else:
+                elif simpeldatake('user/'+str(chat_id),1)=='valid':
                     print (f'folder {namasd} dibuat')
                     os.mkdir('skolidbot/'+namasd) 
                     simpledachange('valid','user/'+str(chat_id),1)
                     f=open('skolidbot/'+namasd+'/'+str(chat_id),'w')
                     f.write('OPS')
                     f.close()
-                bot.sendMessage(chat_id,'''
+                if simpeldatake('user/'+str(chat_id),1)=='valid':
+                    bot.sendMessage(chat_id,'''
 silahkan upload di sini tiga file Dapodik berikut:
 - daftar guru,
 - daftar tendik, dan
@@ -952,23 +1004,29 @@ berikut command untuk mengakses data
     if command[:9] == 'createOps':
         if chat_id == myID:
             a=command.split(' ')
+            ada=False
             try:
                 f=disfile('givenlist.txt.enc')
                 f=f.split('\n')
                 for daftar in f:
                     if daftar[:4]==a[1] or daftar[5:]==a[2]:
                         bot.sendMessage(chat_id,'kode sekolah/ sekolah telah terdaftar cek /codelist')
+                        ada=True
             except:
                 print('err')
             if len(a)!=3:
                 bot.sendMessage(chat_id,'format createOps<spasi>4 kode sekolah<spasi>nama sekolah tanpa spasi\ncontoh : createOps ANU1 SDN_Anurejo_1')
-            else:
+            elif ada==False:
                 createOps(a[1],a[2])
+                bot.sendMessage(chat_id,'kode telah dibuat klik /codelist')
+                
                 
     if command[:6]=='delOps':
         if chat_id == myID:
             a=command.split(' ')
             delOps(a[1])
+            bot.sendMessage(chat_id,'perintah disampaikan ke server, klik /codelist untuk melihat list terkini')
+        
     
     if command == '/progres':
         if simpeldatake(urlb,1)=='valid':
@@ -1291,8 +1349,8 @@ berdasarkan tahun :
 with open('token') as f:
     token=f.read()
 token=token.split('\n')          
-bot = telepot.Bot(token[0])#testbot
-#bot = telepot.Bot(token[1])#skolidbot
+#bot = telepot.Bot(token[0])#testbot
+bot = telepot.Bot(token[1])#skolidbot
 bot.message_loop(handle)
 print('i am listening..')
 
