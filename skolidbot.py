@@ -40,7 +40,7 @@ def cekcounter():
             d=''
             for item in c:
                 if item !='':
-                    bot.sendMessage(int(item),'Update sinkronisasi terbaru :\n\n'+d.join(a).replace('_x_','\n\n'))
+                    bot.sendMessage(int(item),'Update sinkronisasi terbaru :\n\n'+d.join(a).replace('_x_','\n\n')+'klik /menu untuk mengakses menu utama')
             print(a)
             with open('plugin/dapodik.txt','r') as f:
                 b=f.read()
@@ -1370,8 +1370,8 @@ berdasarkan tahun :
 with open('token') as f:
     token=f.read()
 token=token.split('\n')          
-bot = telepot.Bot(token[0])#testbot
-#bot = telepot.Bot(token[1])#skolidbot
+#bot = telepot.Bot(token[0])#testbot
+bot = telepot.Bot(token[1])#skolidbot
 bot.message_loop(handle)
 print('i am listening..')
 
