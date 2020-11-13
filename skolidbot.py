@@ -1289,7 +1289,7 @@ contoh : wikis rantai makanan
             bot.sendMessage(chat_id,'''
 /skulist : baca shortskulist
 /givenlist : baca givenlist
-/lisfolskul: get folder school list
+/liSkul: get folder school list
 /lisuser : get user folder list
 /mintakode : get individual mesage ops code
 /codelist : get all registered ops code list
@@ -1311,19 +1311,17 @@ contoh : delOps PSM2
     
     if command == '/skulist':
         if os.path.exists('shortskulist.txt.enc'):
-            with open('shortskulist.txt.enc','r') as f:
-                a=f.read()
-                a.split('\n')
-                bot.sendMessage(chat_id,a)
+            a=disfile('shortskulist.txt.enc')
+            a=a.split('\n')
+            bot.sendMessage(chat_id,a)
     
     if command == '/givenlist':
         if os.path.exists('givenlist.txt.enc'):
-            with open('givenlist.txt.enc','r') as f:
-                a=f.read()
-                a.split('\n')
-                bot.sendMessage(chat_id,a)
+            a=disfile('givenlist.txt.enc')
+            a=a.split('\n')
+            bot.sendMessage(chat_id,a)
     
-    if command == '/lisfolskul':
+    if command == '/liSkul':
         a=[x for x in os.listdir('skolidbot')]
         b=''
         for item in a:
