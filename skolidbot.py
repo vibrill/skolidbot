@@ -54,7 +54,7 @@ t.start()
 #my chat id writen in myID file
 with open('myID') as f:
     myID=int(f.read())
-bot.sendMessage(myID,'system online!')
+    
 
 def handle(msg):
     content_type, chat_type, chat_id = telepot.glance(msg,'chat')
@@ -1397,6 +1397,7 @@ token=token.split('\n')
 bot = telepot.Bot(token[1])#skolidbot
 bot.message_loop(handle)
 print('i am listening..')
+bot.sendMessage(myID,'system online!')
 
 while 1:
     time.sleep(0.1)
