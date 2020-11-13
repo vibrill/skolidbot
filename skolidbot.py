@@ -1287,6 +1287,8 @@ contoh : wikis rantai makanan
     if command=='/admin':
         if chat_id==myID:
             bot.sendMessage(chat_id,'''
+/skulist : baca shortskulist
+/givenlist : baca givenlist
 /lisfolskul: get folder school list
 /lisuser : get user folder list
 /mintakode : get individual mesage ops code
@@ -1306,6 +1308,20 @@ delOps[spasi]
 menghapus kode OPS
 contoh : delOps PSM2
 ''')
+    
+    if command == '/skulist':
+        if os.path.exists('shortskulist.txt.enc'):
+            with open('shortskulist.txt.enc','r') as f:
+                a=f.read()
+                a.split('\n')
+                bot.sendMessage(chat_id,a)
+    
+    if command == '/givenlist':
+        if os.path.exists('givenlist.txt.enc'):
+            with open('givenlist.txt.enc','r') as f:
+                a=f.read()
+                a.split('\n')
+                bot.sendMessage(chat_id,a)
     
     if command == '/lisfolskul':
         a=[x for x in os.listdir('skolidbot')]
