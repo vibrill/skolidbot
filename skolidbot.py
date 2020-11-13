@@ -1287,6 +1287,8 @@ contoh : wikis rantai makanan
     if command=='/admin':
         if chat_id==myID:
             bot.sendMessage(chat_id,'''
+/lisfolskul: get folder school list
+/lisuser : get user folder list
 /mintakode : get individual mesage ops code
 /codelist : get all registered ops code list
 /syscapt : upload screenshot to bloger
@@ -1304,6 +1306,25 @@ delOps[spasi]
 menghapus kode OPS
 contoh : delOps PSM2
 ''')
+    
+    if command == '/lisfolskul':
+        a=[x for x in os.listdir('skolidbot')]
+        b=''
+        for item in a:
+            b+=item+'\n'
+        bot.sendMessage(chat_id,b)
+    
+    if command == '/lisuser':
+        a=[x for x in os.listdir('user')]
+        b=''
+        for item in a:
+            b+='/user_'+item+'\n'
+        bot.sendMessage(chat_id,b)
+    
+    if command[:6] == '/user_':
+        if os.path.exists(command.replace('_','/')[1:]):
+            with open(command.replace('_','/')[1:]) as f:
+                bot.sendMessage(chat_id,f.read())
     
     if command=='/pusmenjar':
          bot.sendMessage(chat_id,'''
@@ -1349,8 +1370,8 @@ berdasarkan tahun :
 with open('token') as f:
     token=f.read()
 token=token.split('\n')          
-#bot = telepot.Bot(token[0])#testbot
-bot = telepot.Bot(token[1])#skolidbot
+bot = telepot.Bot(token[0])#testbot
+#bot = telepot.Bot(token[1])#skolidbot
 bot.message_loop(handle)
 print('i am listening..')
 
