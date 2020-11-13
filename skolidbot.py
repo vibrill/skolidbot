@@ -14,7 +14,6 @@ import subprocess
 import wikis
 import pijar
 
-
 def cekDA():
     u1='plugin/dapodik.txt'
     u2='plugin/dapotest.txt'
@@ -55,7 +54,8 @@ t.start()
 #my chat id writen in myID file
 with open('myID') as f:
     myID=int(f.read())
-    
+bot.sendMessage(myID,'system online!')
+
 def handle(msg):
     content_type, chat_type, chat_id = telepot.glance(msg,'chat')
     #dibawah hiden for editing only
@@ -63,18 +63,27 @@ def handle(msg):
 #------------------------------------------------------------------------
     if content_type == 'text': #jika pesan berupa text
         command = msg['text']
-        log=open('logfile','a+',)
+        log=[]
         if os.path.exists('user/'+str(chat_id)):
             if simpeldatake('user/'+str(chat_id),6)!='empty':
                 print(content_type+' from '+simpeldatake('user/'+str(chat_id),6)+' : '+command)
-                log.write(content_type+' from '+simpeldatake('user/'+str(chat_id),6)+' : '+command+'\n')
+                log.append(content_type+' from '+simpeldatake('user/'+str(chat_id),6)+' : '+command+'\n')
+                if len(log)>200:
+                    l=''
+                    with open('logfile','w') as f:
+                        f.write(l.join(log))
+                    log=[]
             else:
                 print (content_type+' from '+str(chat_id)+' : '+command)
-                log.write(content_type+' from '+str(chat_id)+' : '+command+'\n')
+                log.append(content_type+' from '+str(chat_id)+' : '+command+'\n')
+                if len(log)>200:
+                    l=''
+                    with open('logfile','w') as f:
+                        f.write(l.join(log))
+                    log=[]
         else:
             print (content_type+' from '+str(chat_id)+' : '+command)
-            log.write(content_type+' from '+str(chat_id)+' : '+command+'\n')
-        log.close()    
+            log.append(content_type+' from '+str(chat_id)+' : '+command+'\n')
     else:
         command = ('empty')
 #------------------------------------------------------------------------    
