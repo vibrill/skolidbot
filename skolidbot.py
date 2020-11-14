@@ -47,6 +47,7 @@ def cekcounter():
             with open('plugin/dapotest.txt','w') as f:
                 f.write(b)
         time.sleep(3600) #3600 s = 1 hour
+        bot.sendMessage(myID,'cekDA diluncurkan')
 
 import threading
 t = threading.Thread(target=cekcounter)
