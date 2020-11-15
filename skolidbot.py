@@ -31,13 +31,13 @@ def cekDA():
 
 def cekcounter():
     while True:
+        time.sleep(7) #give main thread finish the algorithm if it in startup process
         a=cekDA()
         if a!=[]:
             with open('ops.list','r') as f:
                 c=f.read()
                 c=c.split('\n')
             d=''
-            time.sleep(10) #give main thread finish the algorithm if it in startup process
             for item in c:
                 if item !='':
                     bot.sendMessage(int(item),'Update sinkronisasi terbaru :\n\n'+d.join(a).replace('_x_','\n\n')+'klik /menu untuk mengakses menu utama')
@@ -46,11 +46,11 @@ def cekcounter():
                 b=f.read()
             with open('plugin/dapotest.txt','w') as f:
                 f.write(b)
-        time.sleep(3600) #3600 s = 1 hour
         bot.sendMessage(myID,'cekDA diluncurkan')
+        time.sleep(3600) #3600 s = 1 hour
 
 import threading
-t = threading.Thread(target=cekcounter)
+t = threading.Thread(target=cekcounter) #cekcounter
 t.start()
 
 #my chat id writen in myID file
