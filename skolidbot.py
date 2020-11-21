@@ -13,45 +13,39 @@ from datetime import datetime, date, timedelta
 import subprocess
 import wikis
 import pijar
-
-def cekDA():
-    u1='plugin/dapodik.txt'
-    u2='plugin/dapotest.txt'
-    beda=[]
-    with open(u1) as f:
-        a=f.read()
-        a=a.split('\n\n')
-    with open(u2) as f:
-        b=f.read()
-        b=b.split('\n\n')
-    for item in a:
-        if item not in b:
-            beda.append(item+'_x_')
-    return beda
-
-def cekcounter():
-    while True:
-        time.sleep(7) #give main thread finish the algorithm if it in startup process
-        a=cekDA()
-        if a!=[]:
-            with open('ops.list','r') as f:
-                c=f.read()
-                c=c.split('\n')
-            d=''
-            for item in c:
-                if item !='':
-                    bot.sendMessage(int(item),'Update sinkronisasi terbaru :\n\n'+d.join(a).replace('_x_','\n\n')+'klik /menu untuk mengakses menu utama')
-            print(a)
-            with open('plugin/dapodik.txt','r') as f:
-                b=f.read()
-            with open('plugin/dapotest.txt','w') as f:
-                f.write(b)
-        bot.sendMessage(myID,'cekDA diluncurkan')
-        time.sleep(3600) #3600 s = 1 hour
-
-import threading
-t = threading.Thread(target=cekcounter) #cekcounter
-t.start()
+# 
+# def cekDA():
+#     u1='plugin/dapodik.txt'
+#     u2='plugin/dapotest.txt'
+#     beda=[]
+#     with open(u1) as f:
+#         a=f.read()
+#         a=a.split('\n\n')
+#     with open(u2) as f:
+#         b=f.read()
+#         b=b.split('\n\n')
+#     for item in a:
+#         if item not in b:
+#             beda.append(item+'_x_')
+#     return beda
+# 
+# def cekcounter():
+#     import random
+#     while True:
+#         time.sleep(7) #give main thread finish the algorithm if it in startup process
+#         a=cekDA()
+#         if a!=[]:
+#             x=random.randint(1,1000)
+#             handle({f'message_id': {x}, 'from': {'id': 1283777412, 'is_bot': False, 'first_name': 'Very', 'last_name': 'Brillianto', 'language_code': 'en'}, 'chat': {'id': 1283777412, 'first_name': 'Very', 'last_name': 'Brillianto', 'type': 'private'}, 'date': 1605481449, 'text': '-flash1', 'entities': [{'offset': 0, 'length': 5, 'type': 'bot_command'}]})
+#             print('send command 1')
+#         x=random.randint(1,1000)
+#         handle({f'message_id': {x}, 'from': {'id': 1283777412, 'is_bot': False, 'first_name': 'Very', 'last_name': 'Brillianto', 'language_code': 'en'}, 'chat': {'id': 1283777412, 'first_name': 'Very', 'last_name': 'Brillianto', 'type': 'private'}, 'date': 1605481449, 'text': '-flash2', 'entities': [{'offset': 0, 'length': 5, 'type': 'bot_command'}]})
+#         print('send command 2')
+#         time.sleep(300) #3600 = 1 hour, 300 = 5 minutes
+# 
+# import threading
+# t = threading.Thread(target=cekcounter, daemon=True) #cekcounter
+# t.start()
 
 #my chat id writen in myID file
 with open('myID') as f:
@@ -59,6 +53,7 @@ with open('myID') as f:
     
 
 def handle(msg):
+#     print(msg)
     content_type, chat_type, chat_id = telepot.glance(msg,'chat')
     #dibawah hiden for editing only
     #print(content_type, chat_type, chat_id)
@@ -89,6 +84,21 @@ def handle(msg):
     else:
         command = ('empty')
 #------------------------------------------------------------------------    
+#     if command =='-flash2':
+#         bot.sendMessage(1283777412,'cekDA dijalankan')
+#     
+#     if command == '-flash1':
+#         a=cekDA()
+#         with open('ops.list','r') as f:
+#             c=f.read()
+#             c=c.split('\n')
+#         d=''
+#         bot.sendMessage( 1283777412,'Update sinkronisasi terbaru :\n\n'+d.join(a).replace('_x_','\n\n')+'klik /menu untuk mengakses menu utama')
+#         with open('plugin/dapodik.txt','r') as f:
+#             b=f.read()
+#         with open('plugin/dapotest.txt','w') as f:
+#             f.write(b)
+    
     if command == '/start':
         if os.path.exists('user/'+str(chat_id)):
             bot.sendMessage(chat_id,'user telah terdaftar\ntekan /menu untuk mengakses menu utama')

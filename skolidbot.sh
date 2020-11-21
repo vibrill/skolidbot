@@ -3,5 +3,5 @@ sleep 60s
 cd /home/pi/Desktop/runapp/skolidbot
 pwd
 echo $$
-python3 skolidbot.py
+python3 skolidbot.py | python3 discordbot.py
 
