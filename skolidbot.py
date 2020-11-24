@@ -92,7 +92,7 @@ def handle(msg):
             c=c.split('\n')
             d=''
             for userid in c:
-                if userid!=''
+                if userid!='':
                     userid=int(userid)
                     bot.sendMessage(userid,'Update sinkronisasi terbaru :\n\n'+d.join(a).replace('_x_','\n\n')+'klik /menu untuk mengakses menu utama')
         with open('plugin/dapodik.txt','r') as f:
@@ -1406,8 +1406,8 @@ berdasarkan tahun :
 with open('token') as f:
     token=f.read()
 token=token.split('\n')          
-#bot = telepot.Bot(token[0])#testbot
-bot = telepot.Bot(token[1])#skolidbot
+bot = telepot.Bot(token[0])#testbot
+#bot = telepot.Bot(token[1])#skolidbot
 bot.message_loop(handle)
 print('i am listening..')
 bot.sendMessage(myID,'system online!')
