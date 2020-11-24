@@ -85,7 +85,7 @@ def handle(msg):
         command = ('empty')
 #------------------------------------------------------------------------    
     
-    if command.lower() == 'cekupdate':
+    if command == '/cekupdate':
         a=cekDA()
         with open('ops.list','r') as f:
             c=f.read()
@@ -95,6 +95,7 @@ def handle(msg):
                 if userid!='':
                     userid=int(userid)
                     bot.sendMessage(userid,'Update sinkronisasi terbaru :\n\n'+d.join(a).replace('_x_','\n\n')+'klik /menu untuk mengakses menu utama')
+                    time.sleep(1)
         with open('plugin/dapodik.txt','r') as f:
             b=f.read()
         with open('plugin/dapotest.txt','w') as f:
@@ -1317,6 +1318,13 @@ contoh : wikis rantai makanan
 /codelist : get all registered ops code list
 /syscapt : upload screenshot to bloger
 /arsipall : mengarsipkan App dan Data
+/cekupdate : cek adanya update sinkron terbaru
+
+delfile[spasi][path]
+menghapus file
+
+makefile[spasi][path][spasi][nama file][spasi][isi]
+membuat file baru(menindih)
 
 mesall[spasi][pesan]
 kirim pesan ke semua User
@@ -1401,6 +1409,61 @@ berdasarkan tahun :
         bot.sendMessage(chat_id,pijar.tahjudurl('2018')+'\n\n tekan /pusmenjar untuk kembali ke menu publikasi\ntekan /menu untuk kembali ke menu utama')
     if command=='/all_publikasi':
         bot.sendMessage(chat_id,pijar.judurl()+'\n\n tekan /pusmenjar untuk kembali ke menu publikasi\ntekan /menu untuk kembali ke menu utama')
+    
+#file access
+    if command[:6].lower()=='/home/':
+        if chat_id==myID:
+            if os.path.exists(command):
+                if os.path.isdir(command):
+                    a=[x for x in os.listdir(command)]
+                    print(a)
+                    ls=''
+                    for item in a:
+                        ls=ls+item+'\n'
+                    bot.sendMessage(myID,ls)
+                elif os.path.isfile(command):
+                    with open(command) as f:
+                        spliter=4000
+                        file=f.read()
+                        if len(file)==0:
+                            bot.sendMessage(myID,'file is empty')
+                        elif len(file)<=4000:
+                            bot.sendMessage(myID,file)
+                        elif len(file)>4000:
+                            y=len(file)//spliter
+                            print(y)
+                            for x in range(y):
+                                bot.sendMessage(myID,file[x*spliter:(x+1)*spliter])
+                                time.sleep(2)
+            else:
+                bot.sendMessage(myID,'path not found!')
+    
+    if command[:8].lower()=='delfile ':
+        if chat_id==myID:
+            if os.path.exists(command[8:]):
+                if os.path.isfile(command[8:]):
+                    os.remove(command[8:])
+                    bot.sendMessage(myID,'file telah dihapus')
+                else :
+                    bot.sendMessage(myID,'file telah dihapus')
+            else:
+                bot.sendMessage(myID,'folder detected, its not a file')
+     
+    if command[:9].lower()=='makefile ':
+         if chat_id==myID:
+             text = command.split(' ',3) #command,path folder,nama file, isi
+             if len(text)>3:
+                 if os.path.exists(text[1]):
+                     with open(text[1]+'/'+text[2],'w') as f:
+                         f.write(text[3])
+                         bot.sendMessage(myID,'file telah ditulis cek command berikut')
+                         bot.sendMessage(myID,text[1]+'/'+text[2])
+                 else:
+                     bot.sendMessage(myID,'destination folder didnt exists')
+             else:
+                 bot.sendMessage(myID,'format command kurang tepat')
+             
+                
 
 #this token file consist two bot tokens from botfather, token[0] just for test, token[1] is deployment token
 with open('token') as f:
