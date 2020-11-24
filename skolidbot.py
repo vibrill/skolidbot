@@ -1406,8 +1406,8 @@ berdasarkan tahun :
 with open('token') as f:
     token=f.read()
 token=token.split('\n')          
-bot = telepot.Bot(token[0])#testbot
-#bot = telepot.Bot(token[1])#skolidbot
+#bot = telepot.Bot(token[0])#testbot
+bot = telepot.Bot(token[1])#skolidbot
 bot.message_loop(handle)
 print('i am listening..')
 bot.sendMessage(myID,'system online!')
